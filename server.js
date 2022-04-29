@@ -7,6 +7,7 @@ cors = require('cors'),
 mongoose = require('mongoose'),
 config = require('./config/DB');
 const outletRoutes =require('./routes/outletRoutes');
+const tableRoutes =require('./routes/tableRoutes');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -22,6 +23,7 @@ app.use(morgan('dev'));
 
 const port = process.env.PORT || 4000;
 app.use('/outlets', outletRoutes);
+app.use('/tables', tableRoutes);
 
 const  server = app.listen(port, function(){
   console.log('Listening on Port ' + port);
