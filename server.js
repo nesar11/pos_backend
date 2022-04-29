@@ -8,6 +8,7 @@ mongoose = require('mongoose'),
 config = require('./config/DB');
 const outletRoutes =require('./routes/outletRoutes');
 const tableRoutes =require('./routes/tableRoutes');
+const categoryRoutes =require('./routes/cateogryRoutes');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -24,6 +25,7 @@ app.use(morgan('dev'));
 const port = process.env.PORT || 4000;
 app.use('/outlets', outletRoutes);
 app.use('/tables', tableRoutes);
+app.use('/categories', categoryRoutes);
 
 const  server = app.listen(port, function(){
   console.log('Listening on Port ' + port);
