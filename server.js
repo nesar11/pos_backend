@@ -9,6 +9,7 @@ config = require('./config/DB');
 const outletRoutes =require('./routes/outletRoutes');
 const tableRoutes =require('./routes/tableRoutes');
 const categoryRoutes =require('./routes/cateogryRoutes');
+const productRoutes =require('./routes/productRoutes');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -26,6 +27,7 @@ const port = process.env.PORT || 4000;
 app.use('/outlets', outletRoutes);
 app.use('/tables', tableRoutes);
 app.use('/categories', categoryRoutes);
+app.use('/products', productRoutes);
 
 const  server = app.listen(port, function(){
   console.log('Listening on Port ' + port);
