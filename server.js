@@ -10,6 +10,7 @@ const outletRoutes =require('./routes/outletRoutes');
 const tableRoutes =require('./routes/tableRoutes');
 const categoryRoutes =require('./routes/cateogryRoutes');
 const productRoutes =require('./routes/productRoutes');
+const router =require('./routes/userRoutes');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
@@ -31,6 +32,7 @@ app.use('/outlets', outletRoutes);
 app.use('/tables', tableRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/products', productRoutes);
+app.use('/auth', router);
 
 const  server = app.listen(port, function(){
   console.log('Listening on Port ' + port);
