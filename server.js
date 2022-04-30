@@ -24,6 +24,9 @@ app.use(cors());
 app.use(morgan('dev'));
 
 const port = process.env.PORT || 4000;
+
+app.use('/assets/uploads', express.static('uploads'));
+
 app.use('/outlets', outletRoutes);
 app.use('/tables', tableRoutes);
 app.use('/categories', categoryRoutes);

@@ -1,11 +1,24 @@
 const express = require('express');
 
 const app = express();
+const multer = require('multer');
+const mongoose = require('mongoose');
+
 // Require Business model in our routes module
 const Product = require('../models/Product');
+const path = require('path');
 
-exports.addProduct = function (req, res) {
-    let product = new Product(req.body);
+exports.addProduct =  (req, res, next)=> {
+    const file = req.file
+    console.log(req.file)
+    const url = req.protocol + "://" + req.get("host");
+    let product = new Product({
+        title: req.body.title,
+        description: req.body.description,
+        price: req.body.price,
+        pImage: url + "/" + req.file.path,
+        status: req.body.status
+    });
     product.save()
             .then(Pt => {
                 res.status(200).json(Pt);

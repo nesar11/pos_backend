@@ -4,10 +4,11 @@ const app = express();
 const productRoutes = express.Router();
 
 const product = require('../controllers/productController');
+const fileExtrac= require('../middlewares/upload');
 
 const Product = require('../models/Product');
 // Defined store route
-productRoutes.post('/add', product.addProduct);
+productRoutes.post('/add',fileExtrac, product.addProduct);
  // Defined get data(index or listing) route
 
  productRoutes.get('/', product.allProduct )

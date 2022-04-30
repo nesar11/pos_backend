@@ -15,6 +15,10 @@ const Product = new Schema({
   pImage: {
     type: String
   },
+  status: {
+    type: Boolean,
+    default: true
+  },
 },{timestamps:true});
 
 module.exports = mongoose.model('Product', Product);
